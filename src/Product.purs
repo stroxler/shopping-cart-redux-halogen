@@ -1,26 +1,35 @@
-module Product (format, formatJs, logPrice) where
+module Product where
 
--- note: the discard is needed for using do notation
-import Prelude (map, show, ($), (<>), discard, pure, (+))
-import Control.Monad.Eff.Console (CONSOLE, log)
-import Control.Monad.Eff (Eff)
-import Data.Maybe (Maybe, maybe)
-import Data.Function.Uncurried (Fn3, mkFn3)
-
-
-logPrice :: forall e. Number -> Eff (console :: CONSOLE | e) String
-logPrice price = do
-  log $ "The price coming in is " <> show price
-  pure $ "If we were to increment the price it would be " <> show (price + 1.0)
+-- import Prelude
+-- import Control.Monad.Aff (Aff)
+-- import DOM.HTML.Types (HTMLElement)
+-- import Data.Maybe (Maybe(..))
+-- import Hallogen as H
+-- import Halogen.HTML as HH
+-- import Halogen.VDom.Driver (runUI)
 
 
-formatJs :: Fn3 String Number (Maybe Int) String
-formatJs = mkFn3 format
+-- data Query a
+--  = HandleState State a
 
-format :: String -> Number -> Maybe Int -> String
-format title price quantity =
-  title <> " - $" <> show price <> formatQuantity quantity
+-- type State
+--  = { price :: Number
+--    , quantity :: Int
+--    , title :: String }
 
-formatQuantity :: Maybe Int -> String
-formatQuantity quantity =
-  maybe "" (" x " <> _) $ map show quantity
+
+-- -- the m here refers to any effects used in action handlers
+-- product :: forall m. H.Component HH.HTML Query State void m
+-- product = H.component
+--      { initialState: id    -- id means we take state as input without any checks
+--      , receiver: const Nothing
+--      , render:render
+--      , eval: eval
+--      }
+
+
+-- render :: State -> H.ComponentHTML Query
+-- render { price, quantity, title } =
+--   HH.div
+--     []
+--     []
