@@ -1,0 +1,24 @@
+{
+  "name": "shopping-cart",
+  "description": "Redux shopping cart with purscript",
+  "main": "",
+  "authors": [
+    "Steven Troxler <steven.troxler@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "purescript-prelude": "^3.1.1",
+    "purescript-console": "^3.0.0",
+    "purescript-psci-support": "^3.0.0",
+    "purescript-maybe": "^3.0.0",
+    "purescript-functions": "^3.0.0"
+  }
+}
