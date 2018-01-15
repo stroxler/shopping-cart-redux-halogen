@@ -97,6 +97,43 @@ npm run bower -- install -S purescript-functions
 ```
 to get the `Data.Function.Uncurried` module
 
+
+When you actually call stuff from javascript:
+  - functions are just functions, but they are curried unless you
+    explicity uncurry them; if you do you can call them naively
+  - a function returning an Eff returns a javascript thunk, where calling
+    the thunk runs the Eff. The thunk returns whatever the type inside the
+    Eff is (often void, for Unit Effs)
+  - An Aff is similar to an Eff, except it exposes a promise-style api to
+    javascript instead of running synchronously
+
+### Part 4: using haloge
+
+Our compoenent is extremely simple, since it's just a component rendering
+static state, with no real behavior. But it's enough to get started understanding what halogen looks like from javascript 
+
+To pull in `halogen` and also `aff-promise` (which is the only sane way
+I've found to call an Aff from javascript - doing it raw should be possible
+but I failed thus far) run
+```
+npm run bower -- install -S purescript-halogen purescript-aff-promise
+```
+
+The halogen code is in `src/purs/Product.purs`, and the react component
+wrapping it lives in `src/components/Product.js`.
+
+To actually run halogen from react, we use a react `ref` to grab the
+dom element and pass it to halogen, then a react `componentWillReceiveProps`
+function / an always false implementation of `componentShouldUpdate` to
+redirect control flow... this is roughly the same thing you'd get using
+a javascript library like d3 or cytoscape.
+
+To run halogen from inside the app, we have to run purescript `Aff`
+objects from javascript. This is nontrivial to figure out from scratch (and
+I was unable to find any examples), but I added a `runFromJs` that offloads
+some of the work to purescript and I made comment blocks in `Product.js` 
+explaining what's going on.
+
 # Original README: Redux Shopping Cart Example
 
 This project template was built with [Create React App](https://github.com/facebookincubator/create-react-app), which provides a simple way to start React projects with no build configuration needed.
