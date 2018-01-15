@@ -5,7 +5,7 @@ node_modules
 bower_components
 
 # generated code
-src/purs
+src/purs2js
 
 # purescript stuff
 .psc*

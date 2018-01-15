@@ -26,6 +26,6 @@
     "test": "react-scripts test",
     "bower": "bower",
     "pulp-repl": "pulp repl",
-    "pulp-build": "pulp --watch build --build-path src/purs"
+    "pulp-build": "pulp --watch build --src-path src/purs --build-path src/purs2js"
   }
 }

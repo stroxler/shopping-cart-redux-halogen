@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Product from './Product'
 
-import { logPrice, formatJs } from '../purs/ProductFormatting'
-import { Nothing, Just } from '../purs/Data.Maybe'
+import { logPrice, formatJs } from '../purs2js/ProductFormatting'
+import { Nothing, Just } from '../purs2js/Data.Maybe'
 
 
 const Cart  = ({ products, total, onCheckoutClicked, onResetClicked }) => {
